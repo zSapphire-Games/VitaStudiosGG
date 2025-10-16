@@ -13,7 +13,6 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Mail } from "lucide-react";
 
-import heroImage from "@assets/generated_images/Futuristic_cityscape_hero_image_0f12531b.png";
 import studioImage from "@assets/generated_images/Modern_studio_workspace_image_d0c8c0a9.png";
 import projectImage1 from "@assets/generated_images/Sci-fi_game_character_shot_e76efbd9.png";
 import projectImage2 from "@assets/generated_images/Fantasy_forest_environment_art_16652a98.png";
@@ -49,28 +48,11 @@ const teamMembers = [
 ];
 
 function HeroSection() {
-  const heroRef = useRef(null);
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 150]);
-
   return (
     <section
-      ref={heroRef}
       className="relative h-screen w-full overflow-hidden"
       data-testid="section-hero"
     >
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y }}
-      >
-        <img
-          src={heroImage}
-          alt="A Better Tomorrow - Cinematic game scene"
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30" />
-      </motion.div>
-
       <div className="absolute top-6 left-6 md:top-8 md:left-12 z-20">
         <img
           src={logoImage}
@@ -90,7 +72,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-          className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight mb-6"
+          className="text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-tight mb-6"
           data-testid="text-hero-title"
         >
           A Better Tomorrow
@@ -99,7 +81,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-          className="text-lg md:text-xl text-white/90 max-w-2xl"
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl"
           data-testid="text-hero-tagline"
         >
           Crafting worlds beyond imagination
