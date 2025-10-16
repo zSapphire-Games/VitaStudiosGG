@@ -13,8 +13,8 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Mail } from "lucide-react";
 
-import projectImage1 from "@assets/generated_images/Sci-fi_game_character_shot_e76efbd9.png";
-import projectImage2 from "@assets/generated_images/Fantasy_forest_environment_art_16652a98.png";
+import projectImage1 from "@assets/generated_images/HighresScreenshot00001.png";
+import projectImage2 from "@assets/generated_images/20251016_1427_Video Game Sunset Scene_remix_01k7nyhxpmejkbxkwpnsk0wd71.jpg";
 import logoImage from "@assets/LOGO VITA_1760595346882.png";
 
 type TeamMember = {
@@ -31,24 +31,24 @@ const projects = [
   {
     id: "1",
     title: "A Better Tomorrow",
-    description: "An epic sci-fi adventure set in a dystopian future",
+    description: "An epic superhero adventure game.",
     imageUrl: projectImage1,
     fullDescription:
-      "An epic sci-fi adventure set in a dystopian future where humanity's last hope rests in the hands of those willing to fight for change. Experience a narrative-driven journey through breathtaking environments, complex moral choices, and unforgettable characters.",
-    genre: "Sci-Fi Action RPG",
-    platforms: "PC, PlayStation 5, Xbox Series X/S",
-    releaseDate: "2025",
+      "An epic adventure set in todays America, where humanity's last hope rests in the hands of those willing to fight for change. Experience a narrative-driven journey through breathtaking environments, complex moral choices, and unforgettable characters.",
+    genre: "Superhero Game",
+    platforms: "PC",
+    releaseDate: "2027",
   },
   {
     id: "2",
-    title: "Echoes of the Ancients",
-    description: "Explore mystical ruins in this enchanting fantasy journey",
+    title: "Nomadic Adventures",
+    description: "Explore beaches, bars, and working from paradise in this enchanting fantasy journey",
     imageUrl: projectImage2,
     fullDescription:
-      "Embark on a magical quest through ancient civilizations lost to time. Uncover forgotten secrets, solve intricate puzzles, and master elemental powers as you restore balance to a world on the brink of chaos.",
+      "Embark on a magical quest through Asian cities lost to time. Uncover forgotten secrets, solve puzzles, while also running a beach bar on the side. Employ others, travel, or work yourself, the choice is yours.",
     genre: "Fantasy Adventure",
-    platforms: "PC, Nintendo Switch",
-    releaseDate: "2026",
+    platforms: "PC",
+    releaseDate: "2028",
   },
 ];
 
