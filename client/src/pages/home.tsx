@@ -42,15 +42,15 @@ const projects = [
 ];
 
 const teamMembers = [
-  { id: "1", name: "Sarah Chen", role: "Creative Director", bio: "15 years crafting narrative experiences", isFounder: true },
-  { id: "2", name: "Marcus Rivera", role: "Technical Director", bio: "Former AAA engine architect", isFounder: true },
-  { id: "3", name: "Elena Volkov", role: "Art Director", bio: "Award-winning visual storyteller", isFounder: true },
-  { id: "4", name: "James Kim", role: "Lead Game Designer", bio: "Passionate about player-driven stories", isFounder: false },
-  { id: "5", name: "Aria Patel", role: "Senior Engineer", bio: "Optimizing performance at scale", isFounder: false },
-  { id: "6", name: "Lucas Bennett", role: "Environment Artist", bio: "Building immersive worlds", isFounder: false },
-  { id: "7", name: "Nina Kowalski", role: "Sound Designer", bio: "Creating atmospheric soundscapes", isFounder: false },
-  { id: "8", name: "David Torres", role: "Narrative Designer", bio: "Weaving compelling narratives", isFounder: false },
-  { id: "9", name: "Maya Anderson", role: "UI/UX Designer", bio: "Crafting intuitive interfaces", isFounder: false },
+  { id: "1", name: "Lukas Sandvik", role: "Creative Director", bio: "Businessman & Game Designer", isFounder: true },
+  { id: "2", name: "Aaron", role: "Chief Executive Officer", bio: "Script Writing & Creative Planning", isFounder: true },
+  { id: "3", name: "Nick Kiafas", role: "Project Director", bio: "Programming and World Building", isFounder: true },
+  { id: "4", name: "Maddox Holt", role: "Audio Designer", bio: "Proficient in Music & Sound Design", isFounder: false },
+  { id: "5", name: "BatCat", role: "3D Modeler", bio: "3D Modeling and Visual Design", isFounder: false },
+  { id: "6", name: "MrKool", role: "Project Director & Artist", bio: "Concept art and marketing material", isFounder: false },
+  { id: "7", name: "Chris", role: "Composer and Script Writer", bio: "Creating atmospheric soundscapes", isFounder: false },
+  { id: "8", name: "Breadley", role: "Graphics Designer", bio: "Video Editing & Writing", isFounder: false },
+  { id: "9", name: "Avensin", role: "3D Modeler", bio: "3D Modeling and Texturing", isFounder: false },
 ];
 
 function HeroSection() {
