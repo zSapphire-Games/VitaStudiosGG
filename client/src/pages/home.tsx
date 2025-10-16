@@ -12,7 +12,9 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Mail } from "lucide-react";
-
+import lukasImage from "@team/lukas.jpg";
+import aaronImage from "@team/aaron.jpg";
+import nickImage from "@team/nick.jpg";
 import projectImage1 from "@assets/generated_images/HighresScreenshot00001.png";
 import projectImage2 from "@assets/generated_images/20251016_1427_Video Game Sunset Scene_remix_01k7nyhxpmejkbxkwpnsk0wd71.jpg";
 import logoImage from "@assets/LOGO VITA_1760595346882.png";
@@ -59,7 +61,7 @@ const teamMembers: TeamMember[] = [
     role: "Creative Director",
     bio: "Businessman & Game Designer",
     isFounder: true,
-    imageUrl: "team/lukas.jpg",
+    imageUrl: lukasImage,
   },
   {
     id: "2",
@@ -67,7 +69,7 @@ const teamMembers: TeamMember[] = [
     role: "Chief Executive Officer",
     bio: "Script Writing & Creative Planning",
     isFounder: true,
-    imageUrl: "/team/aaron.jpg",
+    imageUrl: aaronImage,
   },
   {
     id: "3",
@@ -75,7 +77,7 @@ const teamMembers: TeamMember[] = [
     role: "Project Director",
     bio: "Programming and World Building",
     isFounder: true,
-    imageUrl: "/team/nick.jpg",
+    imageUrl: nickImage,
   },
   {
     id: "4",
