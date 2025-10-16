@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,14 +24,20 @@ const projects = [
     title: "A Better Tomorrow",
     description: "An epic sci-fi adventure set in a dystopian future",
     imageUrl: projectImage1,
-    isFeatured: true,
+    fullDescription: "An epic sci-fi adventure set in a dystopian future where humanity's last hope rests in the hands of those willing to fight for change. Experience a narrative-driven journey through breathtaking environments, complex moral choices, and unforgettable characters.",
+    genre: "Sci-Fi Action RPG",
+    platforms: "PC, PlayStation 5, Xbox Series X/S",
+    releaseDate: "2025",
   },
   {
     id: "2",
     title: "Echoes of the Ancients",
     description: "Explore mystical ruins in this enchanting fantasy journey",
     imageUrl: projectImage2,
-    isFeatured: false,
+    fullDescription: "Embark on a magical quest through ancient civilizations lost to time. Uncover forgotten secrets, solve intricate puzzles, and master elemental powers as you restore balance to a world on the brink of chaos.",
+    genre: "Fantasy Adventure",
+    platforms: "PC, Nintendo Switch",
+    releaseDate: "2026",
   },
 ];
 
@@ -149,6 +155,72 @@ function FeaturedProjectSection() {
   );
 }
 
+function ProjectCard({ project, index, isInView }: { project: typeof projects[0], index: number, isInView: boolean }) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
+      className="cursor-pointer perspective-1000"
+      onClick={() => setIsFlipped(!isFlipped)}
+      data-testid={`card-project-${project.id}`}
+    >
+      <motion.div
+        className="relative w-full aspect-video preserve-3d"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Front of card */}
+        <div className="absolute inset-0 backface-hidden">
+          <div className="relative overflow-hidden h-full transition-all duration-300 ease-out hover:shadow-lg rounded-lg">
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-8">
+              <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2" data-testid={`text-project-title-${project.id}`}>
+                {project.title}
+              </h3>
+              <p className="text-white/90 text-sm md:text-base" data-testid={`text-project-description-${project.id}`}>
+                {project.description}
+              </p>
+              <p className="text-white/70 text-xs md:text-sm mt-3">Click to learn more</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Back of card */}
+        <div className="absolute inset-0 backface-hidden rotate-y-180">
+          <div className="h-full bg-card border border-card-border rounded-lg p-6 md:p-8 flex flex-col justify-center">
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+              {project.title}
+            </h3>
+            <p className="text-muted-foreground leading-relaxed mb-6 text-sm md:text-base">
+              {project.fullDescription}
+            </p>
+            <div className="space-y-2 text-sm md:text-base">
+              <p className="text-foreground">
+                <span className="font-semibold">Genre:</span> {project.genre}
+              </p>
+              <p className="text-foreground">
+                <span className="font-semibold">Platforms:</span> {project.platforms}
+              </p>
+              <p className="text-foreground">
+                <span className="font-semibold">Release:</span> {project.releaseDate}
+              </p>
+            </div>
+            <p className="text-muted-foreground text-xs md:text-sm mt-6">Click to go back</p>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function ProjectsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -170,34 +242,12 @@ function ProjectsSection() {
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <ProjectCard
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
-              className={`group cursor-pointer ${
-                project.isFeatured ? "md:col-span-2" : ""
-              }`}
-              data-testid={`card-project-${project.id}`}
-            >
-              <div className="relative overflow-hidden transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg">
-                <div className="aspect-video w-full">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end p-8">
-                  <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2" data-testid={`text-project-title-${project.id}`}>
-                    {project.title}
-                  </h3>
-                  <p className="text-white/90 text-base md:text-lg" data-testid={`text-project-description-${project.id}`}>
-                    {project.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              project={project}
+              index={index}
+              isInView={isInView}
+            />
           ))}
         </div>
       </motion.div>
