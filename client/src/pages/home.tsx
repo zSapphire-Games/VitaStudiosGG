@@ -41,7 +41,7 @@ const projects = [
   {
     id: "2",
     title: "Nomadic Adventures",
-    description: "Explore mountains, nature, and running a beach bar in this solo project by Sapphire",
+    description: "Explore mountains, caves, and nature, while running a bar in this solo project by Sapphire",
     imageUrl: projectImage2,
     fullDescription:
       "Embark on a magical quest through Asian cities lost to time. Uncover forgotten secrets, solve puzzles, while also running a beach bar on the side. Employ others, travel, or work yourself, the choice is yours.",
