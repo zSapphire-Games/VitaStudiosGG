@@ -41,7 +41,7 @@ const projects = [
   {
     id: "2",
     title: "Nomadic Adventures",
-    description: "Explore beaches, bars, and working from paradise in this enchanting fantasy journey",
+    description: "Explore mountains, nature, and running a beach bar in this solo project by Sapphire",
     imageUrl: projectImage2,
     fullDescription:
       "Embark on a magical quest through Asian cities lost to time. Uncover forgotten secrets, solve puzzles, while also running a beach bar on the side. Employ others, travel, or work yourself, the choice is yours.",
@@ -177,9 +177,8 @@ function HeroSection() {
             entertainment.
           </p>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            Founded by industry veterans with a shared passion for meaningful
-            narratives, we believe in creating experiences that resonate long
-            after the credits roll.
+            Founded by a group of young creators with a shared passion for meaningful
+            narratives, we create stories that sit with you long after you stop playing.
           </p>
         </motion.div>
       </motion.div>
