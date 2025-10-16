@@ -524,5 +524,159 @@ function ContactSection() {
     mutationFn: async (data: InsertContact) => {
       return await apiRequest("POST", "/api/contact", data);
     },
-  ...
+    onSuccess: () => {
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. We'll get back to you soon.",
+      });
+      form.reset();
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const onSubmit = (data: InsertContact) => {
+    mutation.mutate(data);
+  };
+
+  return (
+    <section
+      ref={ref}
+      className="py-20 md:py-32 px-6 md:px-12"
+      data-testid="section-contact"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-lg mx-auto"
+      >
+        <div className="text-center mb-12">
+          <h2
+            className="text-4xl md:text-5xl font-semibold text-foreground mb-4"
+            data-testid="text-contact-heading"
+          >
+            Get In Touch
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Interested in collaborating or learning more about our work?
+          </p>
+        </div>
+
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <div>
+            <Label
+              htmlFor="name"
+              className="text-sm text-muted-foreground mb-2 block"
+            >
+              Name
+            </Label>
+            <Input
+              id="name"
+              {...form.register("name")}
+              className="border-border focus:border-celestial transition-colors"
+              data-testid="input-name"
+            />
+            {form.formState.errors.name && (
+              <p className="text-sm text-destructive mt-1">
+                {form.formState.errors.name.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <Label
+              htmlFor="email"
+              className="text-sm text-muted-foreground mb-2 block"
+            >
+              Email
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              {...form.register("email")}
+              className="border-border focus:border-celestial transition-colors"
+              data-testid="input-email"
+            />
+            {form.formState.errors.email && (
+              <p className="text-sm text-destructive mt-1">
+                {form.formState.errors.email.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <Label
+              htmlFor="message"
+              className="text-sm text-muted-foreground mb-2 block"
+            >
+              Message
+            </Label>
+            <Textarea
+              id="message"
+              {...form.register("message")}
+              rows={5}
+              className="border-border focus:border-celestial transition-colors resize-none"
+              data-testid="input-message"
+            />
+            {form.formState.errors.message && (
+              <p className="text-sm text-destructive mt-1">
+                {form.formState.errors.message.message}
+              </p>
+            )}
+          </div>
+
+          <Button
+            type="submit"
+            className="w-full bg-celestial text-white"
+            disabled={mutation.isPending}
+            data-testid="button-submit-contact"
+          >
+            {mutation.isPending ? (
+              "Sending..."
+            ) : (
+              <>
+                <Mail className="w-4 h-4 mr-2" />
+                Send Message
+              </>
+            )}
+          </Button>
+        </form>
+      </motion.div>
+    </section>
+  );
+}
+
+export default function Home() {
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = "smooth";
+    return () => {
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <HeroSection />
+      <FeaturedProjectSection />
+      <ProjectsSection />
+      <TeamSection />
+      <ContactSection />
+
+      <footer className="py-8 px-6 md:px-12 border-t border-border">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Vita Studios. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
 
