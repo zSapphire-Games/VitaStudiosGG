@@ -59,7 +59,7 @@ const teamMembers: TeamMember[] = [
     role: "Creative Director",
     bio: "Businessman & Game Designer",
     isFounder: true,
-    imageUrl: "/team/lukas.jpg",
+    imageUrl: "team/lukas.jpg",
   },
   {
     id: "2",
@@ -213,7 +213,7 @@ function FeaturedProjectSection() {
               A Better Tomorrow
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              An epic sci-fi adventure set in a dystopian future where
+              An epic superhero adventure set in modern day America where
               humanity's last hope rests in the hands of those willing to fight
               for change.
             </p>
