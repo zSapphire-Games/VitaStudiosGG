@@ -1,7 +1,9 @@
 import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 
 // In-memory storage for contact submissions (for demo purposes)
-// In production, you'd want to use a database or external service
+// NOTE: Netlify Functions are stateless - this array will reset on each cold start
+// In production, you'd want to use a database (Netlify Blobs, Supabase, etc.) or
+// integrate with an email service (SendGrid, Mailgun) to persist contact submissions
 const contactSubmissions: Array<{
   id: number;
   name: string;
