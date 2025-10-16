@@ -66,7 +66,7 @@ function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto"
       >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -75,23 +75,36 @@ function HeroSection() {
           className="text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-tight mb-6"
           data-testid="text-hero-title"
         >
-          A Better Tomorrow
+          Vita Studios
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl"
+          className="text-lg md:text-xl text-muted-foreground mb-8"
           data-testid="text-hero-tagline"
         >
           Crafting worlds beyond imagination
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
+          className="max-w-2xl"
+        >
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-4">
+            We are an independent creative studio dedicated to developing story-driven games that push the boundaries of interactive entertainment.
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            Founded by industry veterans with a shared passion for meaningful narratives, we believe in creating experiences that resonate long after the credits roll.
+          </p>
+        </motion.div>
       </motion.div>
     </section>
   );
 }
 
-function AboutSection() {
+function FeaturedProjectSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -99,7 +112,7 @@ function AboutSection() {
     <section
       ref={ref}
       className="py-20 md:py-32 px-6 md:px-12"
-      data-testid="section-about"
+      data-testid="section-featured"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -109,22 +122,22 @@ function AboutSection() {
       >
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className="max-w-prose">
-            <h2 className="text-4xl md:text-5xl font-semibold text-foreground mb-6" data-testid="text-about-heading">
-              About Vita Studios
+            <h2 className="text-4xl md:text-5xl font-semibold text-foreground mb-6" data-testid="text-featured-heading">
+              A Better Tomorrow
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              We are an independent creative studio dedicated to developing story-driven games that push the boundaries of interactive entertainment.
+              An epic sci-fi adventure set in a dystopian future where humanity's last hope rests in the hands of those willing to fight for change.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Founded by industry veterans with a shared passion for meaningful narratives, we believe in creating experiences that resonate long after the credits roll.
+              Experience a narrative-driven journey through breathtaking environments, complex moral choices, and unforgettable characters.
             </p>
           </div>
           <div>
             <img
-              src={studioImage}
-              alt="Vita Studios workspace"
+              src={projectImage1}
+              alt="A Better Tomorrow game scene"
               className="w-full rounded-lg shadow-md"
-              data-testid="img-about-studio"
+              data-testid="img-featured-project"
             />
           </div>
         </div>
@@ -424,7 +437,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
-      <AboutSection />
+      <FeaturedProjectSection />
       <ProjectsSection />
       <TeamSection />
       <ContactSection />
